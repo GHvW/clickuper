@@ -2,8 +2,15 @@
   "name": "clickuper",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "build:dev": "shadow-cljs compile app",
+    "build:release": "shadow-cljs release app"
+  },
   "devDependencies": {
     "shadow-cljs": "2.16.12"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.25.0",
+    "yargs": "^17.3.1"
+  }
 }

@@ -8,4 +8,7 @@
  []
 
  :builds
- {}}
+ {:app
+  {:target :node-script
+   :main clickuper.app.main/main
+   :output-to "dist/script.js"}}}

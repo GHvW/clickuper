@@ -26,3 +26,5 @@ pom.xml.asc
 .metals
 .vs
 .vscode
+
+dist
