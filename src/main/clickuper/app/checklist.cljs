@@ -7,3 +7,12 @@
                          {:name item
                           :orderindex index})
                        items)})
+
+
+(defn read-checklist
+  [path]
+  ())
+
+
+(comment
+  (make-checklist "dev test" ["first one", "second one", "thrid one"]))

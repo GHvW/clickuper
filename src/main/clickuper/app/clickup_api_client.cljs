@@ -3,7 +3,7 @@
    ["axios" :as axios]))
 
 
-(defn clickup-client
+(defn make-clickup-client
   [config]
   (.create axios #js {:baseUrl "https://api.clickup.com/api/v2"
                       :headers #js {"Authorization" (config :token)
@@ -12,7 +12,7 @@
 
 (defn build-checklist-url
   [config task-id]
-  (str "/task" task-id "/checklist?custom_task_ids=true&team_id=" (config :team-id)))
+  (str "/task/" task-id "/checklist?custom_task_ids=true&team_id=" (config :team-id)))
 
 
 (defn post-checklist 
@@ -20,3 +20,8 @@
   (.post axios 
          (build-checklist-url config task-id)
          (clj->js list-items)))
+
+
+
+(comment
+  (build-checklist-url {:team-id "10101"} "DEV-0001"))
