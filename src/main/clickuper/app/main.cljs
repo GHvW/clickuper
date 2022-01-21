@@ -1,6 +1,7 @@
 (ns clickuper.app.main
   (:require
-   ["commander" :refer (Command)]))
+   ["commander" :refer [Command]]
+   [clickuper.app.checklist :refer [action-handler]]))
 
 ; steps
 ; get to do column
@@ -22,7 +23,6 @@
         (.argument "<task-id>", "ClickUp task id")
         (.argument "[file]", "File containing the checklist items", "checklist.txt")
         (.description "Add a checklist to a ClickUp task")
-        (.action (fn [task-id file]
-                   (.log js/console (str "file: " file ", " "task-id: " task-id)))))
+        (.action action-handler))
     (.parse program (.-argv js/process))))
   

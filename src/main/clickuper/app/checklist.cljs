@@ -14,5 +14,14 @@
   ())
 
 
+(defn action-handler
+  [task-id file]
+  (.log js/console (str "file: " file ", " "task-id: " task-id)))
+
+
 (comment
-  (make-checklist "dev test" ["first one", "second one", "thrid one"]))
+  
+  (action-handler "DEV-0001" "thelist.txt")
+
+  (make-checklist "dev test" ["first one", "second one", "thrid one"])
+  )
