@@ -4,22 +4,40 @@
 
 
 (defn make-clickup-client
-  [config]
-  (.create axios #js {:baseUrl "https://api.clickup.com/api/v2"
-                      :headers #js {"Authorization" (config :token)
-                                    "Content-Type" "application/json"}}))
+  [{token :token}]
+  (.create axios 
+           #js {:baseURL "https://api.clickup.com/api/v2"
+                :headers #js {"Authorization" token
+                              "Content-Type" "application/json"}}))
 
 
 (defn build-checklist-url
-  [config task-id]
-  (str "/task/" task-id "/checklist?custom_task_ids=true&team_id=" (config :team-id)))
+  [{team-id :team-id} task-id]
+  (str "/task/" task-id "/checklist?custom_task_ids=true&team_id=" team-id))
+
+
+(defn build-item-url
+  [checklist-id]
+  (str "/checklist/" checklist-id "/checklist_item"))
 
 
 (defn post-checklist 
-  [config task-id list-items]
-  (.post axios 
-         (build-checklist-url config task-id)
-         (clj->js list-items)))
+  [config 
+   ^js/Axios 
+   clickup-client 
+   task-id 
+   {name :name items :items}]
+  (let [checklist-url (build-checklist-url config task-id)]
+    (-> clickup-client
+        (.post checklist-url #js {:name name})
+        (.then (fn [^js/Response response]
+                 (let [item-url (build-item-url (.. response -data -checklist -id))]
+                   (.all js/Promise
+                         (map (fn [item]
+                                (.post clickup-client
+                                       item-url
+                                       (clj->js item)))
+                              items))))))))
 
 
 
