@@ -56,27 +56,5 @@
                              items))))))
 
 
-;; (defn post-checklist 
-;;   [config 
-;;    ^js/Axios clickup-client 
-;;    task-id 
-;;    {name :name items :items}]
-;;   (let [checklist-url (build-checklist-url config task-id)]
-;;     (-> clickup-client
-;;         (.post checklist-url #js {:name name})
-;;         (.then (fn [^js/Response response]
-;;                  (let [item-url (build-item-url (.. response 
-;;                                                     -data 
-;;                                                     -checklist 
-;;                                                     -id))]
-;;                    (.all js/Promise
-;;                          (map (fn [item]
-;;                                 (.post clickup-client
-;;                                        item-url
-;;                                        (clj->js item)))
-;;                               items))))))))
-
-
-
 (comment
   (build-checklist-url {:team-id "10101"} "DEV-0001"))
