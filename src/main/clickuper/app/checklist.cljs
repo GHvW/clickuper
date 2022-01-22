@@ -3,7 +3,7 @@
    ["fs/promises" :refer [readFile]]
    [clojure.string :as str]
    ["chalk" :as chalk]
-   [clickuper.app.renderers :refer [render-checklist-success]]))
+   [clickuper.app.renderers :refer [render-checklist-success render-error]]))
 
 
 (defn make-checklist
@@ -27,8 +27,8 @@
       (.then (comp (partial create-checklist task-id)
                    (partial make-checklist "Dev Test")
                    text->items))
-      (.then (render-checklist-success))
-      (.catch (fn [err] (.log js/console (.red chalk (str "error sending request: " err)))))))
+      (.then render-checklist-success)
+      (.catch render-error)))
 
 
 (comment
