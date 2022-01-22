@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "dev": "shadow-cljs watch app",
     "build:dev": "shadow-cljs compile app",
     "build:release": "shadow-cljs release app"
   },
