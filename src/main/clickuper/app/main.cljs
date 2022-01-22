@@ -29,7 +29,10 @@
         (.argument "<task-id>", "ClickUp task id")
         (.argument "[file]", "File containing the checklist items", "checklist.txt")
         (.description "Add a checklist to a ClickUp task")
-        (.action (partial action-handler (partial post-checklist config clickup-client))))
+        (.action (partial action-handler 
+                          (partial post-checklist 
+                                   config 
+                                   clickup-client))))
     (.parse program argv)))
   
 
