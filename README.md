@@ -6,7 +6,14 @@ At [Halff](https://www.halff.com/), we use a "Dev Test" checklist in ClickUp to 
 
 ClickUper attempts to automate as much of that process as possible. 
 
-## Builds
+
+
+## Builds + Run
+
+ClickUper relies on the existence of 3 environment variables:
+1. CLICKUP_API_TOKEN - your personal auth token
+2. CLICKUP_USER_ID - your user Id
+3. CLICKUP_WORKSPACE_ID - your workspace/team Id
 
 After running any of the builds, the script can be found at `<root>/dist/clickuper.js`
 
