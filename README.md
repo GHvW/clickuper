@@ -11,7 +11,7 @@ ClickUper attempts to automate as much of that process as possible.
 ## Builds + Run
 
 ClickUper relies on the existence of 3 environment variables:
-1. `CLICKUP_API_TOKEN` - your personal auth token
+1. `CLICKUP_API_KEY` - your personal auth token
 2. `CLICKUP_USER_ID` - your user Id
 3. `CLICKUP_WORKSPACE_ID` - your workspace/team Id
 
@@ -22,9 +22,9 @@ Find the set of commands by running
 $ node <root>/dist/clickuper.js -h
 ```
 
-ClickUper is built using [shadow-cljs](https://github.com/thheller/shadow-cljs). 
+ClickUper is built using [shadow-cljs](https://github.com/thheller/shadow-cljs).
 
-You can install the tool globally, or prefix each of the `npm` scripts in the `package.json` with `npx`, e.g. `shadow-cljs compile app` becomes `npx shadow-cljs compile app`
+Shadow is an incredible piece of technology, so you likely won't even notice its there.
 
 ### Development
 The dev build will watch the app for code changes and hot-reload as you make them.

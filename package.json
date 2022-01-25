@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "shadow-cljs watch app",
-    "build:dev": "shadow-cljs compile app",
-    "build:release": "shadow-cljs release app"
+    "dev": "npx shadow-cljs watch app",
+    "build:dev": "npx shadow-cljs compile app",
+    "build:release": "npx shadow-cljs release app"
   },
   "devDependencies": {
     "shadow-cljs": "2.16.12"
